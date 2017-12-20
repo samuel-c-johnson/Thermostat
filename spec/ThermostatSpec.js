@@ -62,4 +62,22 @@ beforeEach(function(){
     thermostat.reset()
     expect(thermostat.temperature).toEqual(20)
   })
+
+  it("Shows the thermostat's power usage: low-usage", function() {
+    for (i = 0; i < 3; i++) {
+      thermostat.decrease()
+    }
+    expect(thermostat.energyUsage()).toEqual("low-usage")
+  })
+
+  it("Shows the thermostat's power usage: medium-usage", function() {
+    expect(thermostat.energyUsage()).toEqual("medium-usage")
+  })
+
+  it("Shows the thermostat's power usage: high-usage", function() {
+    for (i = 0; i < 5; i++) {
+      thermostat.increase()
+    }
+    expect(thermostat.energyUsage()).toEqual("high-usage")
+  })
 })
